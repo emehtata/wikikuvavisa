@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wikikuvavisa
+  namespace: wikikuvavisa
+  labels:
+    app: wikikuvavisa
+spec:
+  selector:
+    matchLabels:
+      app: wikikuvavisa
+  template:
+    metadata:
+      labels:
+        app: wikikuvavisa
+    spec:
+      containers:
+      - name: wikikuvavisa
+        image: localhost:5000/wikikuvavisa:latest  # Replace with your Docker image
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5500
+        env:
+        - name: FLASK_ENV
+          value: "production"  # Set Flask to production mode
+        resources:
+          limits:
+            memory: "96Mi"
+          requests:
+            memory: "64Mi"
+            cpu: "10m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wikikuvavisa
+  namespace: wikikuvavisa
+  labels:
+    app: wikikuvavisa
+spec:
+  type: LoadBalancer
+  selector:
+    app: wikikuvavisa
+  ports:
+  - protocol: TCP
+    port: 5500  # External port
+    targetPort: 5500  # Port on the container

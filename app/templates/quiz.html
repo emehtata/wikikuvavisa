@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Wikipedia-visailu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1>Mikä Wikipedian artikkeli?</h1>
+    <img id="quiz-image" src="{{ image_url }}" alt="Wikipedia-kuva" style="max-width: 100%; height: auto;">
+    <div class="options-container">
+    <form id="quiz-form" method="POST">
+        {% for option in options %}
+        <div class="option">
+            <input type="radio" name="answer" value="{{ option }}" required> {{ option }}
+        </div>
+        {% endfor %}
+        <input type="hidden" name="correct_answer" value="{{ correct_answer }}">
+        <input type="hidden" name="quiz_image" value="{{ image_url }}">
+        <input type="hidden" name="elapsed_time" id="elapsed-time">
+        <button type="submit">Lähetä</button>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const startTime = new Date().getTime();  // Record start time
+            const quizForm = document.getElementById('quiz-form');
+
+            quizForm.addEventListener('submit', function () {
+                const endTime = new Date().getTime();
+                const elapsedTime = (endTime - startTime) / 1000;  // Time in seconds
+                console.log(elapsedTime)
+                document.getElementById('elapsed-time').value = elapsedTime;  // Set the hidden input's value
+            });
+        });
+    </script>
+</div>
+</body>
+</html>
+

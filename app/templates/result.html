@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Visailun Tulos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>{{ result }}</h1>
+    <img src="{{ image_url }}" alt="Wikipedia-kuva" style="max-width: 100%; height: auto;">
+    <p>
+        <a href="https://fi.wikipedia.org/wiki/{{ correct_answer | replace(' ', '_') }}" target="_blank">
+            {{ correct_answer }}
+        </a>
+    </p>
+    {% if explanation %}
+        <p class="result">
+            {{ explanation }}
+        </p>
+    {% endif %}
+    <a href="/">Pelaa uudelleen</a>
+</body>
+</html>
+

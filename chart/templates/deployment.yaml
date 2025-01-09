@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "chart.fullname" . }}-deployment
+  labels:
+    app: wikikuvavisa
+  {{- include "chart.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app: wikikuvavisa
+    {{- include "chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: wikikuvavisa
+      {{- include "chart.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: FLASK_ENV
+          value: {{ quote .Values.wikikuvavisa.wikikuvavisa.env.flaskEnv }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.wikikuvavisa.wikikuvavisa.image.repository }}:{{ .Values.wikikuvavisa.wikikuvavisa.image.tag
+          | default .Chart.AppVersion }}
+        imagePullPolicy: {{ .Values.wikikuvavisa.wikikuvavisa.imagePullPolicy }}
+        name: wikikuvavisa
+        ports:
+        - containerPort: 5500
+        resources: {{- toYaml .Values.wikikuvavisa.wikikuvavisa.resources | nindent 10
+          }}

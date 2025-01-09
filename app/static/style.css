@@ -1,0 +1,128 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #000072, #2a5298);
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-top: 1em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+img {
+    max-width: 800px;  /* Limit the maximum width */
+    max-height: 400px; /* Limit the maximum height */
+    width: auto;       /* Maintain aspect ratio */
+    height: auto;      /* Maintain aspect ratio */
+    border: 5px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes revealImage {
+    0% {
+        filter: blur(20px);
+    }
+    100% {
+        filter: blur(0px);  /* Fully clear after 30 seconds */
+    }
+}
+
+#quiz-image {
+    max-height: 400px;
+    width: auto;       /* Maintain aspect ratio */
+    height: auto;
+    border: 5px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    filter: blur(30px);  /* Start with a high blur */
+    animation: revealImage 10s linear forwards;  /* Animate blur reduction over 30 seconds */
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+label {
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #ff9800;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #f57c00;
+}
+
+a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffc107;
+}
+
+.result {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 50%
+  text-align: center;
+}
+
+
+/* Style for the options container */
+.options-container {
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+    align-items: flex-start; /* Left align the options */
+    padding: 10px;
+    max-width: 600px; /* Optional: Limit the maximum width of the options */
+    margin: 0 auto;
+}
+
+/* Style for each option */
+.option {
+    /*margin: 5px 0; /* Space between options */
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center; /* Align input and label in a row */
+    text-align: left; /* Ensure text inside label is left-aligned */
+    cursor: pointer;
+}
+
+/* Ensure the input is small and the label takes full width */
+.option input[type="radio"] {
+    cursor: pointer;
+}
+
+.option label {
+    flex-grow: 1; /* Ensure label takes up available space */
+}
+
+/* Hover effect for options */
+.option:hover {
+    background-color: #d3d3d3;
+    color: #000000;
+}

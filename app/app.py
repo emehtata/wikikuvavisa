@@ -107,5 +107,6 @@ def quiz():
     return "No suitable page found, please refresh."
 
 if __name__ == '__main__':
+    logging.info(f"Version {get_version()} starting...")
     app.run(debug=True, port=5500, host="0.0.0.0")
 

@@ -40,3 +40,6 @@ install:
 
 uninstall:
 	helm uninstall $(NAME) -n $(NAME)
+
+debug:
+	cd app && python3 app.py

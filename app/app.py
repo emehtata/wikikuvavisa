@@ -5,11 +5,12 @@ import random
 import os
 import json
 import logging
+import secrets
 import __version__
 
 logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
-    level=logging.INFO,
+    level=logging.DEBUG,
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 
@@ -17,7 +18,7 @@ app = Flask(__name__)
 
 with open('keys.json') as f:
     keys = json.load(f)
-APPID = keys['appid']
+APPID = keys['appid']+f"-{secrets.token_hex(3)}"
 USERID = keys['userid']
 
 WIKIPEDIA_API_URL = "https://fi.wikipedia.org/w/api.php"

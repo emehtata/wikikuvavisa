@@ -1,1 +1,1 @@
-version='0.2-1-gf6575d1'
+version='0.2-1-g6e6857c'

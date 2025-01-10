@@ -6,7 +6,7 @@
 - Fetches random pages with images from Finnish Wikipedia.
 - Displays three title options, one of which is correct.
 - Measures the time taken for a user to make a guess.
-- Gradually reveals the quiz image from blurred to clear over 30 seconds.
+- Gradually reveals the quiz image from blurred to clear over 10 seconds.
 - Provides feedback, the correct title, and a link with a summary on the result page.
 
 ## Technologies Used
@@ -34,7 +34,7 @@
    ```json
     {
         "appid": "your_application_name",
-        "userid": "your_email_address"
+        "userid": "your_email_address_or_url"
     }
    ```
 3. Install dependencies:

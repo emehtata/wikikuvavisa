@@ -126,3 +126,17 @@ a:hover {
     background-color: #d3d3d3;
     color: #000000;
 }
+
+/* Footer styles */
+footer {
+  float: left;
+  font-size: 75%;
+  font-family: "Trebuchet MS", verdana, arial;
+  color: #ffffff;
+  background-color: #330000;
+}
+
+footer p {
+    margin: 0;            /* Remove default margin from paragraph */
+    font-size: 10px;      /* Font size */
+}

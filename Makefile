@@ -1,6 +1,7 @@
 # Variables
 NAME = wikikuvavisa
-IMAGE_NAME = localhost:5000/$(NAME)
+REPOSITORY ?= localhost:5000
+IMAGE_NAME = $(REPOSITORY)/$(NAME)
 TAG = latest
 BRANCH = $$(git rev-parse --abbrev-ref HEAD)
 VERSION = $$(git describe)

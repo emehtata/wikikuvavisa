@@ -5,6 +5,7 @@ import random
 import os
 import json
 import logging
+import __version__
 
 logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
@@ -20,6 +21,9 @@ APPID = keys['appid']
 USERID = keys['userid']
 
 WIKIPEDIA_API_URL = "https://fi.wikipedia.org/w/api.php"
+
+def get_version():
+    return __version__.version
 
 def fetch_random_pages_with_images():
     valid_pages = []
@@ -89,7 +93,7 @@ def quiz():
         else:
             result = f"Väärin. Oikea vastaus on: {correct_answer}"
         summary = fetch_page_summary(correct_answer)
-        return render_template('result.html', result=result, correct_answer=correct_answer, explanation=summary, image_url=image_url)
+        return render_template('result.html', result=result, correct_answer=correct_answer, explanation=summary, image_url=image_url, version=get_version())
 
     pages_with_images = fetch_random_pages_with_images()
     logging.debug(pages_with_images)
@@ -98,7 +102,7 @@ def quiz():
         random.shuffle(pages_with_images)
         options = [page[0] for page in pages_with_images]
         logging.info(options)
-        return render_template('quiz.html', image_url=correct_page[1], correct_answer=correct_page[0], options=options)
+        return render_template('quiz.html', image_url=correct_page[1], correct_answer=correct_page[0], options=options, version=get_version())
     return "No suitable page found, please refresh."
 
 if __name__ == '__main__':

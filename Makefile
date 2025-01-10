@@ -7,6 +7,7 @@ VERSION = $$(git describe)
 
 # Build the Docker image
 build:
+	echo "version='$(VERSION)'" > app/__version__.py
 	docker build -t $(IMAGE_NAME):$(TAG) .
 
 # Push the Docker image to the repository

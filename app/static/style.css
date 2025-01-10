@@ -129,7 +129,7 @@ a:hover {
 
 /* Footer styles */
 footer {
-  float: left;
+  float: right;
   font-size: 75%;
   font-family: "Trebuchet MS", verdana, arial;
   color: #ffffff;

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #005f73;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #0a9396;
+            color: white;
+        }
+        tr:hover {
+            background-color: #d8f3dc;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Results</h1>
+    <table>
+        <tr>
+            <th>Page Name</th>
+            <th>Best Time (seconds)</th>
+        </tr>
+        {% for page_name, _, best_time in results %}
+        <tr>
+            <td><a href="https://fi.wikipedia.org/wiki/{{ page_name|urlencode }}" target="_blank">{{ page_name }}</a></td>
+            <td>{{ best_time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="footer">
+        <p><a href="/">Back to Quiz</a></p>
+    </div>
+</body>
+</html>

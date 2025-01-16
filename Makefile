@@ -6,6 +6,8 @@ TAG = latest
 BRANCH = $$(git rev-parse --abbrev-ref HEAD)
 VERSION = $$(git describe)
 
+.PHONY: build push clean run stop rm install uninstall debug app
+
 # Build the Docker image
 build:
 	echo "version='$(VERSION)'" > app/__version__.py
@@ -42,4 +44,7 @@ uninstall:
 	helm uninstall $(NAME) -n $(NAME)
 
 debug:
+	cd app && python3 app.py -d
+
+app:
 	cd app && python3 app.py

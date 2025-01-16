@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, g
 from bs4 import BeautifulSoup
 import requests
+import argparse
 import random
 import os
 import json
@@ -180,8 +181,14 @@ def show_results():
         rows = cur.fetchall()
     return render_template('results.html', results=rows)
 
-if __name__ == '__main__':
+def main():
+    parser = argparse.ArgumentParser(description="Run the application.")
+    parser.add_argument('-d', '--debug', action='store_true', help="Enable debug mode")
+    args = parser.parse_args()
+    debug_mode = args.debug
     logging.info(f"Version {get_version()} starting...")
     init_db()
-    app.run(debug=True, port=5500, host="0.0.0.0")
+    app.run(debug=debug_mode, port=5500, host="0.0.0.0")
 
+if __name__ == '__main__':
+    main()

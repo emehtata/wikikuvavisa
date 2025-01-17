@@ -38,7 +38,7 @@ rm: stop
 	docker rm $(NAME)
 
 install:
-	helm upgrade --install $(NAME) chart -n $(NAME) --create-namespace
+	helm upgrade --install $(NAME) chart -n $(NAME) --create-namespace --set wikikuvavisa.wikikuvavisa.image.repository=$(REPOSITORY)/wikikuvavisa
 
 uninstall:
 	helm uninstall $(NAME) -n $(NAME)

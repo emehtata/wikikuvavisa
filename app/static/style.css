@@ -140,3 +140,34 @@ footer p {
     margin: 0;            /* Remove default margin from paragraph */
     font-size: 10px;      /* Font size */
 }
+
+.leaderboard {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.leaderboard h3 {
+    margin-bottom: 15px;
+}
+
+.leaderboard-table {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.leaderboard-table td {
+    padding: 8px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.page-name {
+    text-align: left;
+    font-weight: bold;
+}
+
+.best-time {
+    text-align: right;
+    color: #ffffff;
+}

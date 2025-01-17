@@ -5,6 +5,11 @@ IMAGE_NAME = $(REPOSITORY)/$(NAME)
 TAG = latest
 BRANCH = $$(git rev-parse --abbrev-ref HEAD)
 VERSION = $$(git describe)
+SHELL := /bin/bash
+
+include app/__version__.py
+
+.PHONY: build push clean run stop rm install uninstall debug app
 
 # Build the Docker image
 build:
@@ -36,10 +41,15 @@ rm: stop
 	docker rm $(NAME)
 
 install:
-	helm upgrade --install $(NAME) chart -n $(NAME) --create-namespace
+	helm upgrade --install $(NAME) chart -n $(NAME) --create-namespace\
+	 --set wikikuvavisa.wikikuvavisa.image.repository=$(REPOSITORY)/wikikuvavisa\
+	 --set wikikuvavisa.wikikuvavisa.image.tag=$(version)
 
 uninstall:
 	helm uninstall $(NAME) -n $(NAME)
 
 debug:
+	cd app && python3 app.py -d
+
+app:
 	cd app && python3 app.py

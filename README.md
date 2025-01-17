@@ -13,7 +13,6 @@
 - **Python** for server-side logic.
 - **Flask** as the web framework.
 - **Wikimedia API** for fetching Wikipedia content.
-- **Base64 encoding** to obfuscate the correct answer.
 - **Docker** for containerized deployment.
 - **Kubernetes** for scalability and service management.
 
@@ -99,6 +98,8 @@ See `Makefile` for more targets.
 - Enhance error handling and logging.
 - Implement category-based option selection to improve quiz relevance.
 - Add internationalization support for other languages.
+- **Base64 encoding** to obfuscate the correct answer.
+- proxy the image with obfuscated file name
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.

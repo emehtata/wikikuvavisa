@@ -91,6 +91,22 @@ def save_result(page_name, image_url, elapsed_time):
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
 
+def get_top_results(limit=10):
+    try:
+        with get_db() as conn:
+            cur = conn.cursor()
+            cur.execute('''
+                SELECT page_name, image_url, best_time
+                FROM results
+                ORDER BY best_time ASC
+                LIMIT ?
+            ''', (limit,))
+            return cur.fetchall()
+    except sqlite3.Error as e:
+        logging.error(f"Error fetching top results: {e}")
+        return []
+
+
 def fetch_random_pages_with_images():
     valid_pages = []
     max_attempts = 5  # Limit to prevent infinite loops
@@ -161,7 +177,8 @@ def quiz():
             result = f"Väärin. Oikea vastaus on: {correct_answer}"
         summary = fetch_page_summary(correct_answer)
 
-        return render_template('result.html', result=result, correct_answer=correct_answer, explanation=summary, image_url=image_url, version=get_version())
+        return render_template('result.html', result=result,
+            correct_answer=correct_answer, explanation=summary, image_url=image_url, version=get_version(), top_results=get_top_results())
 
     pages_with_images = fetch_random_pages_with_images()
     logging.debug(pages_with_images)

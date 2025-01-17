@@ -22,6 +22,17 @@
 <p>
     <a href="/">Pelaa uudelleen</a>
 </p>
+<div class="leaderboard">
+    <h3>Top 10 Nopeimmat</h3>
+    <table class="leaderboard-table">
+        {% for result in top_results %}
+        <tr>
+            <td class="page-name"><a href="https://fi.wikipedia.org/wiki/{{ result["page_name"] }}">{{ result["page_name"] }}</a></td>
+            <td class="best-time">{{ result["best_time"] }} s</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 </body>
 <footer>
 <p><a href="https://github.com/emehtata/wikikuvavisa">version {{ version }}</a></p>

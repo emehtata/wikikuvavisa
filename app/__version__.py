@@ -1,1 +1,1 @@
-version='0.2-10-g1541b4f'
+version='0.3-1-gc24cc99'
